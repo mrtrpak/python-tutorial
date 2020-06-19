@@ -14,7 +14,9 @@ cursor.execute("DROP DATABASE IF EXISTS python_db")
 
 cursor.execute("CREATE DATABASE IF NOT EXISTS python_db")
 
-cursor.execute("USE python_db")
+use_db = cursor.execute("USE python_db")
+
+use_db
 
 for py_db in cursor:
   print(py_db)
@@ -26,11 +28,11 @@ for py_tbl in cursor:
   print(py_tbl)
 
 # Populating the sql database
-sql = "INSERT INTO players (name, number, position) VALUES (%s, %s, %s)"
+sql_ins = "INSERT INTO players (name, number, position) VALUES (%s, %s, %s)"
 # Add one
 player1 = ("Rodrigo Perez", 8, "Center Midfield")
 
-cursor.execute(sql, player1)
+cursor.execute(sql_ins, player1)
 
 # Add multiple together
 playerList = [
@@ -44,10 +46,20 @@ playerList = [
   ("Andrei Prislav", 10, "Attacking Midfield")
 ]
 
-cursor.executemany(sql, playerList)
+cursor.executemany(sql_ins, playerList)
 
 # Saves the change to database
 db.commit()
+
+# Query more specific using WHERE
+sql_where = "SELECT * FROM players WHERE position = 'Centerback'"
+
+cursor.execute(sql_where)
+
+result3 = cursor.fetchall()
+
+for myresult in result3:
+  print(myresult, "CB")
 
 # Get all the data in the table
 cursor.execute("SELECT * FROM players")
@@ -63,6 +75,4 @@ cursor.execute("SELECT number FROM players")
 result2 = cursor.fetchone()
 
 for row in result2:
-  print(row)
-
-
+  print(row, "player number")
