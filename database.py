@@ -48,6 +48,11 @@ playerList = [
 
 cursor.executemany(sql_ins, playerList)
 
+# Update the database
+sql_dlt = "UPDATE players SET number = 23 WHERE name = 'James Hood'"
+
+cursor.execute(sql_dlt)
+
 # Saves the change to database
 db.commit()
 
@@ -62,10 +67,9 @@ for result in where_result:
   print(result, "CB")
 
 # Query to find all with similarities Ex. below is all that have ll in the middle, ll% would be starts with ll etc.
-sql_like = "SELECT * FROM players WHERE name LIKE '%ll%'" 
-slq_like = "SELECT * FROM players WHERE name = %s"
+sql_like = "SELECT * FROM players WHERE name LIKE '%ll%'"
 
-cursor.execute(sql_like, ("ll", ))
+cursor.execute(sql_like)
 
 like_result = cursor.fetchall()
 
