@@ -62,9 +62,10 @@ for result in where_result:
   print(result, "CB")
 
 # Query to find all with similarities Ex. below is all that have ll in the middle, ll% would be starts with ll etc.
-sql_like = "SELECT * FROM players WHERE name LIKE '%ll%'"
+sql_like = "SELECT * FROM players WHERE name LIKE '%ll%'" 
+slq_like = "SELECT * FROM players WHERE name = %s"
 
-cursor.execute(sql_like)
+cursor.execute(sql_like, ("ll", ))
 
 like_result = cursor.fetchall()
 
