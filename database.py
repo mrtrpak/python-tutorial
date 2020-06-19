@@ -57,7 +57,7 @@ cursor.execute(sql_dlt)
 db.commit()
 
 # Select a limited amount from the database
-cursor.execute("SELECT * FROM players LIMIT 3")
+cursor.execute("SELECT * FROM players LIMIT 3 OFFSET 3")
 
 select_limited = cursor.fetchall()
 
