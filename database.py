@@ -56,10 +56,19 @@ sql_where = "SELECT * FROM players WHERE position = 'Centerback'"
 
 cursor.execute(sql_where)
 
-result3 = cursor.fetchall()
+where_result = cursor.fetchall()
 
-for myresult in result3:
-  print(myresult, "CB")
+for result in where_result:
+  print(result, "CB")
+
+sql_like = "SELECT * FROM players WHERE name LIKE '%in%'"
+
+cursor.execute(sql_like)
+
+like_result = cursor.fetchall()
+
+for result in like_result:
+  print(result, "like query") 
 
 # Get all the data in the table
 cursor.execute("SELECT * FROM players")
