@@ -81,13 +81,20 @@ cursor.execute("SELECT * FROM players")
 
 select_all = cursor.fetchall()
 
-for row in select_all:
-  print(row)
+for result in select_all:
+  print(result)
 
 # Get specific column
 cursor.execute("SELECT number FROM players")
 
 select_specific = cursor.fetchone()
 
-for row in select_specific:
-  print(row, "player number")
+for result in select_specific:
+  print(result, "player number")
+
+cursor.execute("SELECT * FROM players LIMIT 3")
+
+select_limited = cursor.fetchall()
+
+for result in select_limited:
+  print(result, "fist 3")
