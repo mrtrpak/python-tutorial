@@ -61,7 +61,8 @@ where_result = cursor.fetchall()
 for result in where_result:
   print(result, "CB")
 
-sql_like = "SELECT * FROM players WHERE name LIKE '%in%'"
+# Query to find all with similarities Ex. below is all that have ll in the middle, ll% would be starts with ll etc.
+sql_like = "SELECT * FROM players WHERE name LIKE '%ll%'"
 
 cursor.execute(sql_like)
 
@@ -73,15 +74,15 @@ for result in like_result:
 # Get all the data in the table
 cursor.execute("SELECT * FROM players")
 
-result = cursor.fetchall()
+select_all = cursor.fetchall()
 
-for row in result:
+for row in select_all:
   print(row)
 
 # Get specific column
 cursor.execute("SELECT number FROM players")
 
-result2 = cursor.fetchone()
+select_specific = cursor.fetchone()
 
-for row in result2:
+for row in select_specific:
   print(row, "player number")
