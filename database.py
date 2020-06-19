@@ -57,4 +57,12 @@ result = cursor.fetchall()
 for row in result:
   print(row)
 
-  
+# Get specific column
+cursor.execute("SELECT number FROM players")
+
+result2 = cursor.fetchone()
+
+for row in result2:
+  print(row)
+
+
