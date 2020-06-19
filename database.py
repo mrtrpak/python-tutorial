@@ -56,6 +56,14 @@ cursor.execute(sql_dlt)
 # Saves the change to database
 db.commit()
 
+# Select a limited amount from the database
+cursor.execute("SELECT * FROM players LIMIT 3")
+
+select_limited = cursor.fetchall()
+
+for result in select_limited:
+  print(result, "first 3")
+
 # Query more specific using WHERE
 sql_where = "SELECT * FROM players WHERE position = 'Centerback'"
 
@@ -91,10 +99,3 @@ select_specific = cursor.fetchone()
 
 for result in select_specific:
   print(result, "player number")
-
-cursor.execute("SELECT * FROM players LIMIT 3")
-
-select_limited = cursor.fetchall()
-
-for result in select_limited:
-  print(result, "fist 3")
