@@ -1,5 +1,4 @@
-import mysql.connector;
-
+import mysql.connector
 
 # Connect to MySQL and creating a database
 db = mysql.connector.connect(
@@ -27,15 +26,35 @@ for py_tbl in cursor:
   print(py_tbl)
 
 # Populating the sql database
-sqlFormula = "INSERT INTO players (name, number, position) VALUES (%s, %s, %s)"
+sql = "INSERT INTO players (name, number, position) VALUES (%s, %s, %s)"
+# Add one
+player1 = ("Rodrigo Perez", 8, "Center Midfield")
 
-player1 = ("Marshall Hendricks", 1, "Goalkeeper")
-player2 = ("Trevor Smiths", 4, "Centerback")
-player3 = ("Wolfgang Stryker", 9, "Centerforward")
+cursor.execute(sql, player1)
 
-cursor.execute(sqlFormula, player1)
-cursor.execute(sqlFormula, player2)
-cursor.execute(sqlFormula, player3)
+# Add multiple together
+playerList = [
+  ("Marshall Hendricks", 1, "Goalkeeper"),
+  ("Trevor Smiths", 4, "Centerback"),
+  ("Wolfgang Stryker", 9, "Forward"),
+  ("James Hood", 5, "Rightback"),
+  ("Obi Mutumbo", 8, "Holding Midfield"),
+  ("Clay Antwort", 7, "Winger"),
+  ("Axwell Wellington", 2, "Centerback"),
+  ("Andrei Prislav", 10, "Attacking Midfield")
+]
+
+cursor.executemany(sql, playerList)
 
 # Saves the change to database
 db.commit()
+
+# Get all the data in the table
+cursor.execute("SELECT * FROM players")
+
+result = cursor.fetchall()
+
+for row in result:
+  print(row)
+
+  
