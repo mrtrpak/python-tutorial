@@ -6,6 +6,6 @@ db = mysql.connector.connect(
   password = "rootroot"
 )
 
-print(db)
-
 cursor = db.cursor()
+
+cursor.execute("CREATE DATABASE IF NOT EXISTS python_db")
