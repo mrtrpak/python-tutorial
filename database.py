@@ -43,7 +43,6 @@ playerList = [
   ("Obi Mutumbo", 8, "Holding Midfield"),
   ("Clay Antwort", 7, "Winger"),
   ("Axwell Wellington", 2, "Centerback"),
-  ("Trevor Smiths", 4, "Centerback"),
   ("Andrei Prislav", 10, "Attacking Midfield")
 ]
 
@@ -54,9 +53,14 @@ sql_update = "UPDATE players SET number = 23 WHERE name = 'James Hood'"
 
 cursor.execute(sql_update)
 
+# Delete an entry in the table
 sql_delete = "DELETE FROM players WHERE name = 'Trevor Smiths'"
 
 cursor.execute(sql_delete)
+
+# Drop a table
+# sql_drop = "DROP TABLE IF EXISTS players"
+# cursor.execute(sql_drop)
 
 # Saves the changes to database
 db.commit()
